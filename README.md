@@ -1,6 +1,24 @@
 # Task Management System
 
-A full-stack task management application with complete CRUD operations, built for simplicity and maintainability.
+A simple full-stack management system for tickets with CRUD operations. Aims to balance simplicity while still trying to show a reasonable amount of technical knowledge. Setup is below, as well as some info and justifications.
+
+## Time Spent
+[Instructions]
+Time given was around 3 hours
+
+[Backend]
+This was pretty straight forward - potentially an hour or so.
+
+[Infrastructure]
+Make file and Docker setup especially with tests running etc took a bit longer potentially 1hour+
+
+[Frontend]
+I spent longer on the visual side playing with it. 
+
+Took me around 30minutes to actually build everything functionally - but spent around 1.3hour extra probably playing with the UI.
+
+[Total]
+3 - 4.5 hours of development time.
 
 ## Tech Stack & Architecture
 
@@ -10,6 +28,8 @@ A full-stack task management application with complete CRUD operations, built fo
 **Testing**: Jest with Docker containers
 
 **Architecture**: Unidirectional data flow using React Context + useReducer pattern. This ensures predictable state updates and makes debugging easier. Data flows from API → Context → Components, with actions flowing upward through custom hooks.
+
+This is the way I like frontend as following changes and updates to state is easy, especially when the application grows. Stay with context but can go for a more feature rich state management library if needed as app grows.
 
 **Why this stack**: TypeScript provides type safety across the entire application. React's unidirectional flow prevents state inconsistencies. SQLite offers zero-configuration persistence perfect for development and small-scale production.
 
