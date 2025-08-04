@@ -1,0 +1,53 @@
+services:
+  backend-test:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.backend.test
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./backend/src:/app/backend/src
+      - ./shared_types:/app/shared_types
+    command: npm test
+
+  frontend-test:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.frontend.test
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./frontend/src:/app/frontend/src
+      - ./shared_types:/app/shared_types
+    command: npm test
+
+  # Integration test service that runs both backend and frontend for E2E testing
+  integration-test:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.backend.test
+    environment:
+      - NODE_ENV=test
+    depends_on:
+      - backend-test
+      - frontend-test
+    command: echo "Integration tests would run here"
+
+  # Linting services
+  backend-lint:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.backend.test
+    volumes:
+      - ./backend/src:/app/backend/src
+      - ./shared_types:/app/shared_types
+    command: npm run lint
+
+  frontend-lint:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.frontend.test
+    volumes:
+      - ./frontend/src:/app/frontend/src
+      - ./shared_types:/app/shared_types
+    command: npm run lint

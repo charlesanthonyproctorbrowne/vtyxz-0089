@@ -1,0 +1,36 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+    volumes:
+      - task_data:/app/backend/data
+      - ./backend/src:/app/backend/src
+    command: npm run dev
+
+  frontend:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.frontend.dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/src:/app/frontend/src
+      - ./frontend/index.html:/app/frontend/index.html
+      - ./frontend/vite.config.ts:/app/frontend/vite.config.ts
+      - ./frontend/tailwind.config.js:/app/frontend/tailwind.config.js
+      - ./frontend/postcss.config.js:/app/frontend/postcss.config.js
+      - ./shared_types:/app/shared_types
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  task_data:
+    driver: local

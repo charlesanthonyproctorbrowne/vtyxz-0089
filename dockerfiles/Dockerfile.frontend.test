@@ -1,0 +1,20 @@
+# Test Dockerfile for frontend
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy frontend package files and install dependencies
+COPY frontend/package*.json ./
+RUN npm install
+
+# Copy frontend source code and config
+COPY frontend/src/ ./src/
+COPY frontend/tsconfig.json ./
+COPY frontend/jest.config.js ./
+COPY frontend/index.html ./
+COPY frontend/vite.config.ts ./
+COPY frontend/tailwind.config.js ./
+COPY frontend/postcss.config.js ./
+
+# Run tests
+CMD ["npm", "test"]

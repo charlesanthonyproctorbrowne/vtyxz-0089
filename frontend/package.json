@@ -1,0 +1,37 @@
+{
+  "name": "task-management-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@types/node": "^20.4.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^13.5.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.5",
+    "@vitejs/plugin-react": "^4.0.3",
+    "tailwindcss": "^3.3.3",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
+    "ts-jest": "^29.1.1",
+    "identity-obj-proxy": "^3.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "echo 'Linting would run here - add ESLint configuration'"
+  }
+}

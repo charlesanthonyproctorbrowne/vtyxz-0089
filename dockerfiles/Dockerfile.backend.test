@@ -1,0 +1,16 @@
+# Test Dockerfile for backend
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy backend package files first
+COPY backend/package*.json ./
+RUN npm ci
+
+# Copy backend source code and config
+COPY backend/src/ ./src/
+COPY backend/tsconfig.json ./
+COPY backend/jest.config.js ./
+
+# Run tests
+CMD ["npm", "test"]
